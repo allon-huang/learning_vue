@@ -101,23 +101,23 @@
         if (this.username == "" || this.password == "") {
           alert("请输入用户名或密码")
         } else {
-          let data = {'userName': this.username, 'password': this.password}
+          this.password = this.$md5(this.password)
+          let data = {
+            'userName': this.username, 
+            'password': this.password,
+            }
           /*接口请求*/
-          this.$http.post('/asyysy/asyysy_core/user/login', data).then((res) => {
+          this.$http.post('/asyysy/api/user/login', data).then((res) => {
             console.log(res.bodyText)
           /*接口的传值是(-1,该用户不存在),(0,密码错误)，同时还会检测管理员账号的值*/
-          if (res.bodyText == "用户不存在") {
-            this.tishi = "该用户不存在"
+          if (res.body.type == "FAIL") {
+            this.tishi = res.body.msg
             this.showTishi = true
-          } else if (res.bodyText == "用户密码错误") {
-            this.tishi = "密码输入错误"
-            this.showTishi = true
-          }
           // else if(res.data == 'admin'){
           //       /*路由跳转this.$router.push*/
           //       this.$router.push('/main')
           //     }
-          else {
+          } else {
             this.tishi = "登录成功"
             this.showTishi = true
             setCookie('username', this.username, 1000 * 60)

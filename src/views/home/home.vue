@@ -711,7 +711,7 @@ li .text-keyword{height: 40px;padding-left: 10px;box-sizing: border-box;margin-l
     methods: {
 //      退出登录
       logout(){
-        this.$http.post('/asyysy/asyysy_core/user/logout').then((res) => {
+        this.$http.post('/asyysy/api/user/logout').then((res) => {
           console.log(res)
         delCookie('username')
         if (res.bodyText == "用户未登录") {

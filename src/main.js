@@ -5,10 +5,11 @@ import App from './App'
 import router from './router'
 import axios from 'axios'
 import VueResource from 'vue-resource'
-
+import md5 from 'js-md5';
 Vue.use(VueResource)
 Vue.prototype.HOST = '/api'
 
+Vue.prototype.$md5 = md5;
 Vue.prototype.$ajax = axios
 
 Vue.config.productionTip = false

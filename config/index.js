@@ -11,7 +11,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/asyysy': {
-        target: 'https://www.asyysy.cn',//后端接口地址
+        target: 'http://yysy.wicp.net',//后端接口地址
         changeOrigin: true,//是否允许跨越
         pathRewrite: {
           '^/asyysy': '',//重写,
